@@ -17,4 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('pasien','PasienController');
+Route::prefix('/admin')->group(function(){
+    Route::resource('/pasien','PasienController');
+    Route::resource('/dokter','DokterController');
+    
+});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

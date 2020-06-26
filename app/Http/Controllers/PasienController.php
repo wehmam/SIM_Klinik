@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Pasien;
-use App\Tindakan;
+use App\Http\Requests\PasienRequest;
 use Illuminate\Http\Request;
+use Alert;
 
 class PasienController extends Controller
 {
@@ -15,7 +16,7 @@ class PasienController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.admin.pasien.index',['pasien'=> Pasien::all()]);
     }
 
     /**
@@ -25,8 +26,7 @@ class PasienController extends Controller
      */
     public function create()
     {
-        $tindakan = Tindakan::all();
-        return view('form-create',compact('tindakan'));
+        return view('pages.admin.pasien.form-create');
     }
 
     /**
@@ -35,19 +35,11 @@ class PasienController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PasienRequest $request)
     {
-        $validate = $request->validate([
-            'nama' => 'required',
-            'alamat' => 'required'
-        ]);
-
-        $pasien = Pasien::create($validate);
-
-        $pasien->tindakan()->attach($request->id_tindakan);
-        // $pasien->save();
-
-        return "data berhasil masuk";
+        Pasien::create($request->all());
+        Alert::toast("Pendaftaran Pasien $request->nama Berhasil!","success");
+        return redirect()->route('pasien.index');
     }
 
     /**
@@ -67,9 +59,11 @@ class PasienController extends Controller
      * @param  \App\Pasien  $pasien
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pasien $pasien)
+    public function edit($id)
     {
-        //
+        $pasien = Pasien::find($id);
+        // dd($pasien);
+        return view('pages.admin.pasien.form-edit',compact('pasien'));
     }
 
     /**
@@ -79,9 +73,11 @@ class PasienController extends Controller
      * @param  \App\Pasien  $pasien
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pasien $pasien)
+    public function update(PasienRequest $request)
     {
-        //
+        Pasien::find($request->id)->update($request->all());
+        Alert::toast("Pasien $request->nama Berhasil Di ubah!","success");
+        return redirect()->route('pasien.index');
     }
 
     /**
@@ -90,8 +86,10 @@ class PasienController extends Controller
      * @param  \App\Pasien  $pasien
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pasien $pasien)
+    public function destroy($id)
     {
-        //
+        Pasien::destroy($id);
+        Alert::toast('Data Berhasil Dihapus!','error');
+        return redirect()->route('pasien.index');
     }
 }
