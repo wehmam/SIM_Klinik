@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title','Poli Pemeriksaan')
+@section('title','Daftar Poli')
 @section('poli','active')
 @section('content')
 
@@ -7,7 +7,7 @@
     <div class="container-fluid">
     <div class="row mb-2">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Daftar Pasien Poli</h1>
+            <h1 class="m-0 text-dark">Daftar Poli</h1>
         </div>
         <div class="col-sm-6">
             <a href="{{ route('poli.create') }}" class="btn btn-primary float-right"><i class="fa fa-plus"> Add Data</i></a>
@@ -20,43 +20,34 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <table id="example" class="display nowrap" style="width:100%">
+                <table class="table table-bordered">
                     <thead>
-                        <tr class="">
-                            <th></th>
-                            <th>No Antrian</th>
-                            <th>Nama</th>
-                            <th>Tindakan</th>
-                            <th>Total Biaya</th>
+                        <tr class="text-center">
+                            <th>No</th>
+                            <th>Poli</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody class="">
-                        @foreach($pasien as $pasiens)
+                    <tbody class="text-center">
+                        @foreach($poli as $polis)
                             <tr>
-                                <td></td>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $pasiens->nama }}</td>
+                                <td>{{ $polis->poli }}</td>
                                 <td>
-                                    @foreach ($pasiens->tindakan as $item)
-                                        {{ $item->tindakan. " ," }}
-                                    @endforeach
+                                    <div class="btn-group">
+                                        <a href="{{ route('poli.edit',$polis->id,'edit') }}" class="badge badge-success mx-2 px-2">Edit</a>
+                                        <form action="{{ route('poli.destroy',$polis->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="badge badge-danger" onclick="return confirm('Yakin Ingin menghapus data {{ $polis->poli }}?')">Hapus</button>
+                                        </form>
+                                    </div>
                                 </td>
-                                <td>
-                                    @php
-                                        $total = 0;
-                                        $total = $pasiens->tindakan('harga');   
-                                    @endphp
-                                    {{ $total->sum('harga') }}
-                                </td>
-        
-                                    
-                                {{-- <td>{{ $pasiens->tindakan->tindakan }}</> --}}
-                                {{-- <td>{{ $polis->tindakan->tindakan }}</td> --}}
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
-            </div>  
+            </div>
         </div>
     </div>
 </section>

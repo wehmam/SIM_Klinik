@@ -30,6 +30,24 @@
                 </a>
               </li>
 
+              <li class="nav-item">
+                <a href="{{ route('dokter.index') }}" class="nav-link @yield('dokter')">
+                  <i class="nav-icon fa fa-user"></i>
+                  <p>
+                    Daftar Dokter
+                  </p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ route('poli.index') }}" class="nav-link @yield('poli')">
+                  <i class="nav-icon fa fa-user"></i>
+                  <p>
+                      Daftar Poli
+                  </p>
+                </a>
+              </li>
+
              
             </ul>
         </nav>

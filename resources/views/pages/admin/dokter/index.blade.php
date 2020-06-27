@@ -35,7 +35,7 @@
                             <tr>
                                 {{-- <td></td> --}}
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $dokters->dokter }}</td>
+                                <td>{{ $dokters->nama}}</td>
                                 <td>{{ $dokters->spesialis }}</td>
                                 <td>
                                     <div class="btn-group">

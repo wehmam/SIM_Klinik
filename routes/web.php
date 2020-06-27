@@ -20,7 +20,7 @@ Route::get('/', function () {
 Route::prefix('/admin')->group(function(){
     Route::resource('/pasien','PasienController');
     Route::resource('/dokter','DokterController');
-    
+    Route::resource('/poli','PoliController');
 });
 Auth::routes();
 

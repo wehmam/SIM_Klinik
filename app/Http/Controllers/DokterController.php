@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Dokter;
+use App\Http\Requests\DokterRequest;
 use Illuminate\Http\Request;
+use Alert;
 
 class DokterController extends Controller
 {
@@ -14,7 +16,7 @@ class DokterController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.admin.dokter.index',['dokter'=>Dokter::all()]);
     }
 
     /**
@@ -24,7 +26,7 @@ class DokterController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.dokter.form-create');
     }
 
     /**
@@ -33,9 +35,11 @@ class DokterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DokterRequest $request)
     {
-        //
+        Dokter::create($request->all());
+        Alert::toast("Data Dokter $request->dokter Berhasil Disimpan!","success");
+        return redirect()->route('dokter.index');
     }
 
     /**
@@ -55,9 +59,9 @@ class DokterController extends Controller
      * @param  \App\Dokter  $dokter
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dokter $dokter)
+    public function edit($id)
     {
-        //
+        return view('pages.admin.dokter.form-edit',['dokter'=>Dokter::find($id)]);
     }
 
     /**
@@ -67,9 +71,11 @@ class DokterController extends Controller
      * @param  \App\Dokter  $dokter
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Dokter $dokter)
+    public function update(DokterRequest $request)
     {
-        //
+        Dokter::find($request->id)->update($request->all());
+        Alert::toast("Data Dokter $request->nama Berhasil Diubah!","success");
+        return redirect()->route('dokter.index');
     }
 
     /**
@@ -78,8 +84,10 @@ class DokterController extends Controller
      * @param  \App\Dokter  $dokter
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dokter $dokter)
+    public function destroy($id)
     {
-        //
+        Dokter::destroy($id);
+        Alert::toast("Data Berhasil Dihapus!","error");
+        return redirect()->route('dokter.index');
     }
 }

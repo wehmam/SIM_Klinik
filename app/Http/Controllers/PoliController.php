@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\poli;
+use App\Http\Requests\PoliRequest;
+use Alert;
 use Illuminate\Http\Request;
 
 class PoliController extends Controller
@@ -14,7 +16,7 @@ class PoliController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.admin.poli.index',['poli'=> Poli::all()]);
     }
 
     /**
@@ -24,7 +26,7 @@ class PoliController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.poli.form-create');
     }
 
     /**
@@ -33,9 +35,11 @@ class PoliController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PoliRequest $request)
     {
-        //
+        Poli::create($request->all());
+        Alert::toast("Data Poli $request->poli Berhasil Disimpan","success");
+        return redirect()->route('poli.index');
     }
 
     /**
@@ -55,9 +59,10 @@ class PoliController extends Controller
      * @param  \App\poli  $poli
      * @return \Illuminate\Http\Response
      */
-    public function edit(poli $poli)
+    public function edit($id)
     {
-        //
+        $poli = Poli::find($id);
+        return view('pages.admin.poli.form-edit',compact('poli'));
     }
 
     /**
@@ -67,9 +72,11 @@ class PoliController extends Controller
      * @param  \App\poli  $poli
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, poli $poli)
+    public function update(PoliRequest $request)
     {
-        //
+        Poli::find($request->id)->update($request->all());
+        Alert::toast("Data Poli $request->poli Berhasil Diedit!","success");
+        return redirect()->route('poli.index');
     }
 
     /**
@@ -78,8 +85,10 @@ class PoliController extends Controller
      * @param  \App\poli  $poli
      * @return \Illuminate\Http\Response
      */
-    public function destroy(poli $poli)
+    public function destroy($id)
     {
-        //
+        Poli::destroy($id);
+        Alert::toast("Data Berhasil Dihapus","error");
+        return redirect()->route('poli.index');
     }
 }
