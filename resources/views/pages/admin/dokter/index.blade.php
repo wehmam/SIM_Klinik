@@ -1,6 +1,9 @@
 @extends('layouts.admin.master')
-@section('title','Dokter')
+@section('title','Daftar Dokter')
+@section('master','active')
 @section('dokter','active')
+
+
 @section('content')
 
 <div class="content-header">
@@ -39,11 +42,11 @@
                                 <td>{{ $dokters->spesialis }}</td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{ route('dokter.edit',$dokters->id,'edit') }}" class="badge badge-success mr-2 m-2 px-2">Edit</a>
+                                        <a href="{{ route('dokter.edit',$dokters->id,'edit') }}" class="btn btn-success mx-2"><i class="fas fa-edit"></i></a>
                                         <form action="{{ route('dokter.destroy',$dokters->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="badge badge-danger px-1 m-2" onclick="return confirm('Are You sure wanna delete {{ $dokters->dokter }} Data?')">Hapus</button>
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are You sure wanna delete {{ $dokters->dokter }} Data?')"><i class="fas fa-trash"></i></button>
                                         </form>
                                     </div>
                                 </td>

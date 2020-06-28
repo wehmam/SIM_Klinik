@@ -1,6 +1,8 @@
 @extends('layouts.admin.master')
 @section('title','Tambah Data Pasien')
+@section('master','active')
 @section('pasien','active')
+
 @section('content')
 
 <div class="content-header">
@@ -71,7 +73,8 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="{{ route('pasien.index') }}" class="btn btn-danger">Cancel</a>
+                    <button type="submit" class="btn btn-primary float-right">Submit</button>
                 </form>
             </div>
         </div>

@@ -1,6 +1,11 @@
 @extends('layouts.admin.master')
 @section('title','Tambah Data Dokter')
+@section('master','active')
 @section('dokter','active')
+
+
+
+
 @section('content')
 
 <div class="content-header">
@@ -37,7 +42,8 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                    <a href="{{ route('dokter.index') }}" class="btn btn-danger mt-3">Cancel</a>
+                    <button type="submit" class="btn btn-primary mt-3 float-right">Submit</button>
                 </form>    
             </div>
             {{-- <h1>halaman dokter</h1> --}}

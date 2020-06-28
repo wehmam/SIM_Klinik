@@ -1,13 +1,16 @@
 @extends('layouts.admin.master')
 @section('title','Tambah Data Poli')
+@section('master','active')
 @section('poli','active')
+
+
 @section('content')
 
 <div class="content-header">
     <div class="container-fluid">
     <div class="row mb-2">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Tambah Data Poli</h1>
+            <h1 class="m-0 text-dark">Edit Data Poli</h1>
         </div>
     </div>
     <hr>
@@ -28,7 +31,8 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                    <a href="{{ route('poli.index') }}" class="btn btn-danger mt-3">Cancel</a>
+                    <button type="submit" class="btn btn-primary mt-3 float-right">Submit</button>
                 </form>    
             </div>
         </div>

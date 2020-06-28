@@ -1,6 +1,8 @@
 @extends('layouts.admin.master')
 @section('title','Daftar Poli')
+@section('master','active')
 @section('poli','active')
+
 @section('content')
 
 <div class="content-header">
@@ -35,11 +37,11 @@
                                 <td>{{ $polis->poli }}</td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{ route('poli.edit',$polis->id,'edit') }}" class="badge badge-success mx-2 px-2">Edit</a>
+                                        <a href="{{ route('poli.edit',$polis->id,'edit') }}" class="btn btn-success mr-2"><i class="fas fa-edit"></i></a>
                                         <form action="{{ route('poli.destroy',$polis->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="badge badge-danger" onclick="return confirm('Yakin Ingin menghapus data {{ $polis->poli }}?')">Hapus</button>
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin Ingin menghapus data {{ $polis->poli }}?')"><i class="fas fa-trash"></i></button>
                                         </form>
                                     </div>
                                 </td>

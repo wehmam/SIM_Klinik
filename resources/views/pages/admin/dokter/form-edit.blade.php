@@ -1,6 +1,9 @@
 @extends('layouts.admin.master')
-@section('title','Tambah Data Dokter')
+@section('title','Edit Data Dokter')
+@section('master','active')
 @section('dokter','active')
+
+
 @section('content')
 
 <div class="content-header">
@@ -25,8 +28,8 @@
                     @method('PUT')
                     <input type="hidden" name="id" value="{{ $dokter->id }}">
                     <div class="form-group">
-                        <label for="dokter">Nama</label>
-                        <input type="text" name="dokter" id="dokter" class="form-control @error('dokter')is-invalid @enderror" value="{{ old('dokter') ?? $dokter->dokter }}">
+                        <label for="nama">Nama Dokter</label>
+                        <input type="text" name="nama" id="dokter" class="form-control @error('nama')is-invalid @enderror" value="{{ old('nama') ?? $dokter->nama }}">
                         @error('dokter')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -39,7 +42,8 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                    <a href="{{ route('dokter.index') }}" class="btn btn-danger mt-3">Cancel</a>
+                    <button type="submit" class="btn btn-primary mt-3 float-right">Submit</button>
                 </form>    
             </div>
             {{-- <h1>halaman dokter</h1> --}}
