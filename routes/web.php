@@ -17,11 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('/admin')->group(function(){
-    Route::resource('/pendaftaran','PendaftaranController');
-    Route::resource('/pasien','PasienController');
-    Route::resource('/dokter','DokterController');
-    Route::resource('/poli','PoliController');
+Route::group(['middleware' => ['auth']], function () {
+    Route::prefix('/admin')->group(function(){
+        Route::resource('/pendaftaran','PendaftaranController');
+        Route::resource('/pasien','PasienController');
+        Route::resource('/dokter','DokterController');
+        Route::resource('/poli','PoliController');
+    });    
 });
 Auth::routes();
 
