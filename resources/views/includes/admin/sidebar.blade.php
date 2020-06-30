@@ -22,7 +22,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link @yield('pendaftaran')">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Pendaftaran Pasien 
@@ -31,10 +31,10 @@
                     </a>
                     <ul class="nav nav-treeview">
                       <li class="nav-item">
-                            <a href="{{ route('pasien.index') }}" class="nav-link @yield('asien')">
+                            <a href="{{ route('pendaftaran.index') }}" class="nav-link @yield('pendaftaran')">
                                 <i class="nav-icon fa fa-user"></i>
                                 <p>
-                                    Pasien
+                                    Pendaftaran
                                 </p>
                             </a>
                         </li>

@@ -40,6 +40,16 @@
                                 <td>{{ $pendaftarans->pasien->nama }}</td>
                                 <td>Dr. {{ $pendaftarans->dokter->nama }}</td>
                                 <td>{{ $pendaftarans->poli->poli }}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="{{ route('pendaftaran.edit',$pendaftarans->no_pendaftaran,'edit') }}" class="btn btn-success mx-2"><i class="fas fa-edit">  </i></a>
+                                        <form action="{{ route('pendaftaran.destroy',$pendaftarans->no_pendaftaran) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus data {{ $pendaftarans->pasien->nama }}?')"><i class="fa fa-trash"></i></button>
+                                        </form>
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                         {{-- @foreach($pasien as $pasiens)

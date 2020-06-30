@@ -65,9 +65,14 @@ class PendaftaranController extends Controller
      * @param  \App\Pendaftaran  $pendaftaran
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pendaftaran $pendaftaran)
+    public function edit($id)
     {
-        //
+        $pendaftaran = Pendaftaran::find($id);
+        // dd($pendaftaran);
+        $pasien = Pasien::all();
+        $dokter = Dokter::all();
+        $poli = Poli::all();
+        return view('pages.admin.pendaftaran.form-edit',compact('pendaftaran','pasien','dokter','poli'));
     }
 
     /**
@@ -77,9 +82,11 @@ class PendaftaranController extends Controller
      * @param  \App\Pendaftaran  $pendaftaran
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pendaftaran $pendaftaran)
+    public function update(Request $request)
     {
-        //
+        Pendaftaran::find($request->no_pendaftaran)->update($request->all());    
+        Alert::toast("Data Berhasil diubah!","success");
+        return redirect()->route('pendaftaran.index');
     }
 
     /**
@@ -88,8 +95,10 @@ class PendaftaranController extends Controller
      * @param  \App\Pendaftaran  $pendaftaran
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pendaftaran $pendaftaran)
+    public function destroy($id)
     {
-        //
+        Pendaftaran::destroy($id);
+        Alert::toast("Data Pasien Berhasil Dihapus!","success");
+        return redirect()->route('pendaftaran.index');
     }
 }

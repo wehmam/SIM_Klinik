@@ -17,6 +17,7 @@ class PoliController extends Controller
     public function index()
     {
         return view('pages.admin.poli.index',['poli'=> Poli::all()]);
+        // return "test";
     }
 
     /**
