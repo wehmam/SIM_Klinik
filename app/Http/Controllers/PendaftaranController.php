@@ -43,8 +43,9 @@ class PendaftaranController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         Pendaftaran::create($request->all());
-        Alert::toast("Pendaftaran Berhasil");
+        Alert::toast("Pendaftaran Berhasil","success");
         return redirect()->route('pendaftaran.index');
     }
 
