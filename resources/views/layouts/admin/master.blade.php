@@ -36,12 +36,22 @@
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
   <style>
     td.details-control {
-background: url('http://www.datatables.net/examples/resources/details_open.png') no-repeat center center;
-cursor: pointer;
-}
-tr.details td.details-control {
-background: url('http://www.datatables.net/examples/resources/details_close.png') no-repeat center center;
-}
+      background: url('http://www.datatables.net/examples/resources/details_open.png') no-repeat center center;
+      cursor: pointer;
+    }
+    tr.details td.details-control {
+      background: url('http://www.datatables.net/examples/resources/details_close.png') no-repeat center center;
+    }
+
+    .select2-selection__rendered {
+      line-height: 31px !important;
+    }
+    .select2-container .select2-selection--single {
+      height: 35px !important;
+    }
+    .select2-selection__arrow {
+      height: 34px !important;
+    }
 </style>
 
 
@@ -87,8 +97,9 @@ background: url('http://www.datatables.net/examples/resources/details_close.png'
   {{-- select plugin --}}
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
-
   <script>
+
+    // Jquery For Datatables
   $(document).ready(function() {
       $('#example').dataTable({
           responsive:{
@@ -106,9 +117,10 @@ background: url('http://www.datatables.net/examples/resources/details_close.png'
       });
   });
 
+// select For Jquery
   $(document).ready(function() {
-    $('.js-example-basic-multiple').select2();
-});
+    $('.js-example-basic-single').select2();
+  });
   </script>
   @include('sweetalert::alert')
 </body>
