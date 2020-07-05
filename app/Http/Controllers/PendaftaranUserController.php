@@ -14,7 +14,7 @@ class PendaftaranUserController extends Controller
                 $pasien->where('nama','like','%'.$request->search.'%');
             })->orWhereHas('dokter',function($dokter) use ($request){
                 $dokter->where('nama','like',"%{$request->search}%");
-            })->paginate(10);
+            })->paginate(2);
         }else{
             $pendaftaran = Pendaftaran::all();  
         }

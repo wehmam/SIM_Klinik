@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 @section('title','Tambah Data Pasien')
-@section('master','active')
-@section('pasien','active')
+{{-- @section('','active') --}}
+@section('pendaftaran','active')
 
 @section('content')
 

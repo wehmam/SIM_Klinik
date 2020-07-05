@@ -31,7 +31,6 @@ class PendaftaranController extends Controller
         $pasien = Pasien::all();
         $dokter = Dokter::all();
         $poli = Poli::all();
-        // dd($poli);
         return view('pages.admin.pendaftaran.form-create',compact('pasien','dokter','poli'));
     }
 
@@ -43,7 +42,15 @@ class PendaftaranController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        $duplicate = Pendaftaran::whereHas('poli',function($poli) use ($request){
+            $poli->where('id_poli','like',"%{$request->id_poli}%");
+        })->first();
+
+        if($duplicate){
+            Alert::error('Pendaftaran Gagal!','Pasien Sudah Terdaftar di Poli!');
+            return redirect()->route('pendaftaran.create');
+        }
+
         Pendaftaran::create($request->all());
         Alert::toast("Pendaftaran Berhasil","success");
         return redirect()->route('pendaftaran.index');

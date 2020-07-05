@@ -1,7 +1,6 @@
 @extends('layouts.admin.master')
 @section('title','Edit Data Pasien')
-@section('master','active')
-@section('pasien','active')
+@section('pendaftaran','active')
 
 @section('content')
 
@@ -48,7 +47,8 @@
                             @endforeach
                         </select>
                     </div>
-                    <button class="btn btn-primary" type="submit">Daftar</button>
+                    <a href="{{ route('pendaftaran.index') }}" class="btn btn-danger">Cancel</a>
+                    <button class="btn btn-primary float-right" type="submit">Daftar</button>
                 </form>
             </div>
         </div>

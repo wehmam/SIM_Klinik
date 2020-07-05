@@ -1,6 +1,5 @@
 @extends('layouts.admin.master')
 @section('title','Pendaftaran Pasien')
-{{-- @section('master','active') --}}
 @section('pendaftaran','active')
 
 @section('content')
@@ -38,7 +37,7 @@
                             <tr>
                                 <td>{{ $pendaftarans->no_pendaftaran }}</td>
                                 <td>{{ $pendaftarans->pasien->nama }}</td>
-                                <td>Dr. {{ $pendaftarans->dokter->nama }}</td>
+                                <td>{{ $pendaftarans->dokter->nama }}</td>
                                 <td>{{ $pendaftarans->poli->poli }}</td>
                                 <td>
                                     <div class="btn-group">
