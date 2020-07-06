@@ -12,7 +12,8 @@
             <h1 class="m-0 text-dark">Data Pasien Klinik AZ</h1>
         </div>
         <div class="col-sm-6">
-            <a href="{{ route('pasien.create') }}" class="btn btn-primary float-right"><i class="fa fa-plus"> Add Data</i></a>
+            <a href="{{ route('pasien.create') }}" class="btn btn-primary float-right mx-3"><i class="fa fa-plus"> Add Data</i></a>
+            <a href="{{ route('pasien-PDF') }}" class="btn btn-primary float-right"><i class="fa fa-sd-card"> Print</i></a>
         </div>
     </div>
     <hr>

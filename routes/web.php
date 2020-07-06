@@ -20,6 +20,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('/pasien','PasienController');
         Route::resource('/dokter','DokterController');
         Route::resource('/poli','PoliController');
+        
+        // PDF
+        Route::get('/pasien-PDF','PrintToPDFController@PasienToPDF')->name('pasien-PDF');
     });    
 });
 

@@ -99,8 +99,8 @@ class PendaftaranController extends Controller
             ['id_poli','=',$request->id_poli]
         ])->first();
 
-        if($pendaftaran){
-            Alert::error('Gagal Mengubah Poli Terdaftar!');
+        if($pendaftaran && $request->id_poli){
+            Alert::error('Gagal Mengubah Data Terdaftar!');
             return redirect()->route('pendaftaran.index');
         }
 
