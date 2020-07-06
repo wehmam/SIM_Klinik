@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/','PendaftaranUserController@index')->name('home');
-
 Route::group(['middleware' => ['auth']], function () {
     Route::prefix('/admin')->group(function(){
         Route::resource('/pendaftaran','PendaftaranController');
@@ -23,6 +22,5 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('/poli','PoliController');
     });    
 });
-Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();

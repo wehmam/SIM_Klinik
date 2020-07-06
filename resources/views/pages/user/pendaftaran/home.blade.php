@@ -15,6 +15,7 @@
             </div>
         </div>
         <div class="col-md-6">  
+            @if($pendaftaran->count() >= 1 )
             <div class="row">
                 <div class="col-md-12 mb-4 mx-3">
                     <form class="form-inline my-2 my-lg-0" action="{{ action('PendaftaranUserController@index') }}">
@@ -25,6 +26,7 @@
                     </form>
                 </div>
             </div>
+            @endif
            <div class="row">
                @foreach($pendaftaran as $pendaftarans)
                <div class="col-md-6">

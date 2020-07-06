@@ -25,7 +25,7 @@
                     <input type="hidden" name="no_pendaftaran" value="{{ $pendaftaran->no_pendaftaran }}">
                     <div class="form-group">
                         <label for="pasien">Pasien</label>
-                        <select name="id_pasien" id="pasien" class="form-control">
+                        <select name="id_pasien" id="pasien" class="form-control" disabled>
                             @foreach($pasien as $pasiens)
                                 <option value="{{ $pasiens->id }}" {{ old('id_pasien') ?? $pendaftaran->id_pasien === $pasiens->id ? 'selected' : '' }}>{{ $pasiens->nama }}</option>
                             @endforeach

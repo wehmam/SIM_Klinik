@@ -42,12 +42,16 @@ class PendaftaranController extends Controller
      */
     public function store(Request $request)
     {
-        $duplicate = Pendaftaran::whereHas('poli',function($poli) use ($request){
-            $poli->where('id_poli','like',"%{$request->id_poli}%");
-        })->first();
 
-        if($duplicate){
-            Alert::error('Pendaftaran Gagal!','Pasien Sudah Terdaftar di Poli!');
+        // $pendaftaran = Pendaftaran::where('id_pasien',$request->id_pasien)->first();
+        $pendaftaran = Pendaftaran::where([
+            ['id_pasien','=',$request->id_pasien],
+            ['id_poli','=',$request->id_poli]
+        ])->first();
+        
+        
+        if($pendaftaran){
+            Alert::error('Pendaftaran Gagal!','Pasien Sudah Terdaftar');
             return redirect()->route('pendaftaran.create');
         }
 
@@ -76,7 +80,6 @@ class PendaftaranController extends Controller
     public function edit($id)
     {
         $pendaftaran = Pendaftaran::find($id);
-        // dd($pendaftaran);
         $pasien = Pasien::all();
         $dokter = Dokter::all();
         $poli = Poli::all();
