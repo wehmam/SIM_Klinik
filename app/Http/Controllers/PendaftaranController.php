@@ -92,12 +92,18 @@ class PendaftaranController extends Controller
      */
     public function update(Request $request)
     {
-        $pendaftaran = Pendaftaran::find($request->no_pendaftaran);
-        if($request->id_poli != $pendaftaran->id_poli && $request->no_pendaftaran == $pendaftaran->no_pendaftaran){
-            Alert::error('Pendaftaran Sudah Ada!');
+     
+        $pendaftaran = Pendaftaran::where([
+            // ['id_pasien','=',$request->id_pasien],
+            ['no_pendaftaran','=',$request->no_pendaftaran],
+            ['id_poli','=',$request->id_poli]
+        ])->first();
+
+        if($pendaftaran){
+            Alert::error('Gagal Mengubah Poli Terdaftar!');
             return redirect()->route('pendaftaran.index');
-            // return redirect()->route('pendaftaran.edit',$request->no_pendaftaran,'edit');
         }
+
         Pendaftaran::find($request->no_pendaftaran)->update($request->all());    
         Alert::toast("Data Berhasil diubah!","success");
         return redirect()->route('pendaftaran.index');

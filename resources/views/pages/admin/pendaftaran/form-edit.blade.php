@@ -48,7 +48,7 @@
                         </select>
                     </div>
                     <a href="{{ route('pendaftaran.index') }}" class="btn btn-danger">Cancel</a>
-                    <button class="btn btn-primary float-right" type="submit">Daftar</button>
+                    <button class="btn btn-primary float-right" type="submit">Update</button>
                 </form>
             </div>
         </div>

@@ -43,7 +43,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $pasiens->nik }}</td>
                                 <td>{{ $pasiens->nama }}</td>
-                                <td>{{ $pasiens->tanggal_lahir }}</td>
+                                <td>{{ date('d F Y',strtotime($pasiens->tanggal_lahir)) }}</td>
                                 <td>{{ $pasiens->jenis_kelamin === 0 ? 'Laki-Laki' : 'Perempuan' }}</td>
                                 <td>{{ $pasiens->no_hp }}</td>
                                 <td>{{ $pasiens->alamat }}</td>
