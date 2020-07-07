@@ -1,8 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-        <img src="{{ asset('admin/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
-            class="brand-image img-circle elevation-3" style="opacity: .8">
+        <i class="fa fa-h-square mx-3" style="font-size:36px;"></i>
         <span class="brand-text font-weight-light">Klinik AZ</span>
     </a>
 
@@ -42,7 +41,7 @@
                 </li>
                 <li class="nav-item has-treeview menu-open">
                     <a href="#" class="nav-link @yield('master')">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fa fa-hospital"></i>
                         <p>
                             Data Master
                             <i class="right fas fa-angle-left"></i>
@@ -51,15 +50,15 @@
                     <ul class="nav nav-treeview">
                       <li class="nav-item">
                             <a href="{{ route('pasien.index') }}" class="nav-link @yield('pasien')">
-                                <i class="nav-icon fa fa-user"></i>
+                                <i class="nav-icon fa fa-address-card"></i>
                                 <p>
-                                    Pasien
+                                   Daftar Pasien
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('dokter.index') }}" class="nav-link @yield('dokter')">
-                                <i class="nav-icon fa fa-user"></i>
+                                <i class="nav-icon fa fa-user-md"></i>
                                 <p>
                                     Daftar Dokter
                                 </p>
@@ -67,7 +66,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('poli.index') }}" class="nav-link @yield('poli')">
-                                <i class="nav-icon fa fa-user"></i>
+                                <i class="nav-icon fa fa-plus-square"></i>
                                 <p>
                                     Daftar Poli
                                 </p>

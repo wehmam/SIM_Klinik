@@ -42,6 +42,12 @@ class PendaftaranController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'id_pasien' => 'required',
+            'id_poli' => 'required',
+            'id_dokter' => 'required'
+        ]);
+
         $pendaftaran = Pendaftaran::where([
             ['id_pasien','=',$request->id_pasien],
             ['id_poli','=',$request->id_poli]
@@ -49,7 +55,7 @@ class PendaftaranController extends Controller
     
         if($pendaftaran){
             Alert::error('Pendaftaran Gagal!','Pasien Sudah Terdaftar');
-            return redirect()->route('pendaftaran.create');
+            return redirect()->back();
         }
 
         Pendaftaran::create($request->all());

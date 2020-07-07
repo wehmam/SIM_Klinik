@@ -29,6 +29,7 @@ class PasienRequest extends FormRequest
             'nama' => 'required|string',
             'jenis_kelamin' => 'required',
             'tanggal_lahir' => 'required',
+            'no_hp' => 'required',
             'alamat' => 'required'
         ];
     }
